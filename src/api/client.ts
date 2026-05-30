@@ -1,0 +1,52 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const API_URL = "http://10.0.2.2:8000";
+
+export async function apiFetch(endpoint: string, options?: RequestInit): Promise<Response> {
+  const token = await AsyncStorage.getItem("session_token");
+
+  const response = await fetch(`${API_URL}${endpoint}`, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      "session-token": token ?? "",
+      ...options?.headers,
+    },
+  });
+
+  if (response.status === 401) {
+    await AsyncStorage.clear();
+    throw new Error("UNAUTHORIZED");
+  }
+
+  return response;
+}
+
+export async function logout(): Promise<void> {
+  try {
+    await apiFetch("/session/logout", { method: "POST" });
+  } finally {
+    await AsyncStorage.clear();
+  }
+}
+
+export interface UserProfile {
+  id: number;
+  first_name: string;
+  last_name: string;
+  phone: string | null;
+  email: string;
+  role: { name: string };
+  is_admin: boolean;
+  created_at: string;
+}
+
+export async function getMe(): Promise<UserProfile | null> {
+  try {
+    const res = await apiFetch("/users/me");
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
