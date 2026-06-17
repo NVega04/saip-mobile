@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_URL = "http://10.0.2.2:8000";
+const API_URL = "http://saip.lat:8000";
 
 export async function apiFetch(endpoint: string, options?: RequestInit): Promise<Response> {
   const token = await AsyncStorage.getItem("session_token");

@@ -38,7 +38,7 @@ export default function LoginScreen({ navigation }: Props) {
   const doLogin = async (acceptedTerms: boolean) => {
     setLoading(true);
     try {
-      const res = await fetch("http://10.0.2.2:8000/session/login", {
+      const res = await fetch("http://saip.lat:8000/session/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, accepted_terms: acceptedTerms }),

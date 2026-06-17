@@ -3,7 +3,7 @@ import { File, Paths } from "expo-file-system";
 import * as Sharing from "expo-sharing";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_URL = "http://10.0.2.2:8000";
+const API_URL = "http://saip.lat:8000";
 
 export function useReportDownload() {
   const [loading, setLoading] = useState(false);
