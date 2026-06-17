@@ -8,7 +8,7 @@ export default function DashboardScreen() {
 
   return (
     <VStack flex={1} p="$4" space="md" bg="$backgroundLight50">
-      <Heading size="lg" color="#5C3D1E">
+      <Heading size="lg" color="$textLight900">
         Bienvenido{currentUser ? `, ${currentUser.first_name}` : ""}
       </Heading>
       <HStack space="md" flexWrap="wrap">

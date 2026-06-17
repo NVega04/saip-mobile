@@ -142,7 +142,7 @@ export default function ProvidersScreen() {
   return (
     <VStack flex={1} p="$4" space="md" bg="$backgroundLight50">
       <HStack justifyContent="space-between" alignItems="center">
-        <Heading size="lg" color="#5C3D1E">Proveedores</Heading>
+        <Heading size="lg" color="$textLight900">Proveedores</Heading>
         <Button title="Nuevo" onPress={openCreate} />
       </HStack>
       <SearchBar value={search} onChangeText={setSearch} />

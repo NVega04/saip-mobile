@@ -33,7 +33,7 @@ export default function ReportsScreen() {
 
   return (
     <VStack flex={1} p="$4" space="md" bg="$backgroundLight50">
-      <Heading size="lg" color="#5C3D1E">Reportes</Heading>
+      <Heading size="lg" color="$textLight900">Reportes</Heading>
       <Card>
         <VStack space="md">
           <Text size="sm">Selecciona el tipo de reporte a descargar:</Text>
