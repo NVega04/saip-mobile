@@ -108,7 +108,7 @@ export default function RecipesScreen() {
   return (
     <VStack flex={1} p="$4" space="md" bg="$backgroundLight50">
       <HStack justifyContent="space-between" alignItems="center">
-        <Heading size="lg" color="#5C3D1E">Recetas</Heading>
+        <Heading size="lg" color="$textLight900">Recetas</Heading>
         <Button title="Nueva" onPress={openCreate} />
       </HStack>
       <SearchBar value={search} onChangeText={setSearch} />

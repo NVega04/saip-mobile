@@ -4,7 +4,7 @@ import Card from "../components/Card";
 export default function AboutScreen() {
   return (
     <VStack flex={1} p="$4" space="md" bg="$backgroundLight50">
-      <Heading size="lg" color="#5C3D1E">Acerca de SAIP</Heading>
+      <Heading size="lg" color="$textLight900">Acerca de SAIP</Heading>
       <Card>
         <VStack space="md">
           <Text bold>Sistema Administrativo Integral de Productos</Text>

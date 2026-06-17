@@ -30,13 +30,17 @@ export default function AppDrawer() {
   const hasAccess = (module: string) => canAccessModule(module, allowedModules);
 
   return (
-    <Drawer.Navigator
-      screenOptions={{
-        headerStyle: { backgroundColor: "#5C3D1E" },
-        headerTintColor: "#fff",
-        drawerActiveTintColor: "#5C3D1E",
-        drawerActiveBackgroundColor: "#F5F0EA",
-      }}
+      <Drawer.Navigator
+        screenOptions={{
+          headerStyle: { backgroundColor: "#003459" },
+          headerTintColor: "#FFFFFF",
+          drawerActiveTintColor: "#3a7ca5",
+          drawerActiveBackgroundColor: "#E8EDF5",
+          drawerInactiveTintColor: "#FFFFFF",
+          drawerLabelStyle: { color: "#FFFFFF" },
+          drawerStyle: { backgroundColor: "#003459" },
+          headerTitleStyle: { color: "#FFFFFF" },
+        }}
     >
       <Drawer.Screen name="Dashboard" component={DashboardScreen} options={{ title: "Dashboard" }} />
       {hasAccess("inventario") && (

@@ -75,7 +75,7 @@ export default function ProfileScreen() {
 
   return (
     <VStack flex={1} p="$4" space="md" bg="$backgroundLight50">
-      <Heading size="lg" color="#5C3D1E">Perfil</Heading>
+      <Heading size="lg" color="$textLight900">Perfil</Heading>
       <Card>
         <VStack space="md">
           <Text bold>{currentUser.first_name} {currentUser.last_name}</Text>

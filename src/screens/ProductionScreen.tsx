@@ -61,7 +61,7 @@ export default function ProductionScreen() {
 
   return (
     <VStack flex={1} p="$4" space="md" bg="$backgroundLight50">
-      <Heading size="lg" color="#5C3D1E">Producción</Heading>
+      <Heading size="lg" color="$textLight900">Producción</Heading>
       <SearchBar value={search} onChangeText={setSearch} />
       <FlatList
         data={paginated}

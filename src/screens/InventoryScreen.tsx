@@ -69,7 +69,7 @@ export default function InventoryScreen() {
 
   return (
     <VStack flex={1} p="$4" space="md" bg="$backgroundLight50">
-      <Heading size="lg" color="#5C3D1E">Inventario</Heading>
+      <Heading size="lg" color="$textLight900">Inventario</Heading>
       <SearchBar value={search} onChangeText={setSearch} placeholder="Buscar en inventario..." />
       <FlatList
         data={items}

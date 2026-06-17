@@ -102,7 +102,7 @@ export default function UsersScreen() {
   return (
     <VStack flex={1} p="$4" space="md" bg="$backgroundLight50">
       <HStack justifyContent="space-between" alignItems="center">
-        <Heading size="lg" color="#5C3D1E">Usuarios</Heading>
+        <Heading size="lg" color="$textLight900">Usuarios</Heading>
         <Button title="Nuevo" onPress={openCreate} />
       </HStack>
       <SearchBar value={search} onChangeText={setSearch} />

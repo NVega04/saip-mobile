@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { VStack, Text, Heading } from "@gluestack-ui/themed";
+import { SafeAreaView, ScrollView, View, TouchableOpacity } from "react-native";
+import { Text } from "@gluestack-ui/themed";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 import { useAlert } from "../context/AlertContext";
@@ -68,27 +69,94 @@ export default function RecoverPasswordScreen({ navigation }: Props) {
   };
 
   return (
-    <VStack flex={1} justifyContent="center" p="$6" space="md" bg="$backgroundLight50">
-      <Heading size="lg" color="#5C3D1E" textAlign="center">Recuperar Contraseña</Heading>
-      {step === "email" ? (
-        <>
-          <Text size="sm" color="$textLight500" textAlign="center">
-            Ingresa tu correo electrónico para recibir un token de recuperación.
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#D9DCD6" }}>
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={{ flex: 1, backgroundColor: "#ffffff", paddingHorizontal: 24, paddingTop: 48, paddingBottom: 32, alignItems: "center" }}>
+          <Text
+            style={{
+              fontFamily: "Poppins_600SemiBold",
+              fontSize: 24,
+              color: "#16425b",
+              marginBottom: 8,
+            }}
+          >
+            Recuperar Contraseña
           </Text>
-          <TextInput label="Email" value={email} onChangeText={setEmail} placeholder="correo@ejemplo.com" keyboardType="email-address" autoCapitalize="none" />
-          <Button title="Enviar Token" onPress={handleSendEmail} loading={loading} />
-        </>
-      ) : (
-        <>
-          <Text size="sm" color="$textLight500" textAlign="center">
-            Ingresa el token recibido por correo y tu nueva contraseña.
-          </Text>
-          <TextInput label="Token" value={token} onChangeText={setToken} placeholder="Token de recuperación" autoCapitalize="none" />
-          <TextInput label="Nueva Contraseña" value={newPassword} onChangeText={setNewPassword} placeholder="Nueva contraseña" secureTextEntry />
-          <Button title="Restablecer Contraseña" onPress={handleReset} loading={loading} />
-        </>
-      )}
-      <Button title="Volver al Inicio" onPress={() => navigation.goBack()} variant="link" />
-    </VStack>
+
+          {step === "email" ? (
+            <View style={{ width: "100%" }}>
+              <Text
+                style={{
+                  fontFamily: "Poppins_400Regular",
+                  fontSize: 13.5,
+                  color: "#647a8a",
+                  textAlign: "center",
+                  marginBottom: 28,
+                }}
+              >
+                Ingresa tu correo electrónico para recibir un token de recuperación.
+              </Text>
+
+              <TextInput
+                variant="login"
+                value={email}
+                onChangeText={setEmail}
+                placeholder="Su correo electrónico"
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+
+              <View style={{ marginTop: 24 }}>
+                <Button title={loading ? "Enviando..." : "Enviar Token"} onPress={handleSendEmail} loading={loading} variant="submit" />
+              </View>
+            </View>
+          ) : (
+            <View style={{ width: "100%" }}>
+              <Text
+                style={{
+                  fontFamily: "Poppins_400Regular",
+                  fontSize: 13.5,
+                  color: "#647a8a",
+                  textAlign: "center",
+                  marginBottom: 28,
+                }}
+              >
+                Ingresa el token recibido por correo y tu nueva contraseña.
+              </Text>
+
+              <View style={{ gap: 16 }}>
+                <TextInput
+                  variant="login"
+                  value={token}
+                  onChangeText={setToken}
+                  placeholder="Token de recuperación"
+                  autoCapitalize="none"
+                />
+                <TextInput
+                  variant="login"
+                  value={newPassword}
+                  onChangeText={setNewPassword}
+                  placeholder="Nueva contraseña"
+                  secureTextEntry
+                />
+              </View>
+
+              <View style={{ marginTop: 24 }}>
+                <Button title={loading ? "Restableciendo..." : "Restablecer Contraseña"} onPress={handleReset} loading={loading} variant="submit" />
+              </View>
+            </View>
+          )}
+
+          <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 24 }}>
+            <Text style={{ fontFamily: "Poppins_600SemiBold", fontSize: 12.5, color: "#3a7ca5" }}>
+              Volver al Inicio
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
